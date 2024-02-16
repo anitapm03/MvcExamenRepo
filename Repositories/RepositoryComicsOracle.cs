@@ -4,6 +4,28 @@ using System.Data;
 
 namespace MvcExamenComics.Repositories
 {
+    #region procedures
+    /*
+     CREATE OR REPLACE PROCEDURE SP_MODIFICAR_COMIC (
+    P_IDCOMIC IN COMICS.IDCOMIC%TYPE,
+    P_NOMBRE IN COMICS.NOMBRE%TYPE,
+    P_IMAGEN IN COMICS.IMAGEN%TYPE,
+    P_DESCRIPCION IN COMICS.DESCRIPCION%TYPE
+)
+IS
+BEGIN
+    UPDATE COMICS
+    SET
+        NOMBRE = P_NOMBRE,
+        IMAGEN = P_IMAGEN,
+        DESCRIPCION = P_DESCRIPCION
+    WHERE
+        IDCOMIC = P_IDCOMIC;
+
+    COMMIT;
+END SP_MODIFICAR_COMIC;
+     */
+    #endregion
     public class RepositoryComicsOracle: IRepositoryComics
     {
         private DataTable tablaComics;
@@ -35,6 +57,34 @@ namespace MvcExamenComics.Repositories
             int af = this.com.ExecuteNonQuery();
             this.cn.Close();
             this.com.Parameters.Clear();
+        }
+
+        public List<string> GetNombres()
+        {
+            var consulta = (from datos in this.tablaComics.AsEnumerable()
+                            select datos.Field<string>("NOMBRE")).Distinct();
+            List<string> nombres = new List<string>();
+            foreach (string n in consulta)
+            {
+                nombres.Add(n);
+            }
+            return nombres;
+        }
+
+        public Comic FindByName(string nombre)
+        {
+            var consulta = from datos in this.tablaComics.AsEnumerable()
+                           where datos.Field<string>("NOMBRE") == nombre
+                           select datos;
+            var row = consulta.First();
+            Comic comic = new Comic
+            {
+                IdComic = row.Field<int>("IDCOMIC"),
+                Nombre = row.Field<string>("NOMBRE"),
+                Imagen = row.Field<string>("IMAGEN"),
+                Descripcion = row.Field<string>("DESCRIPCION")
+            };
+            return comic;
         }
 
         public Comic FindComic(int idcomic)
@@ -112,6 +162,25 @@ namespace MvcExamenComics.Repositories
             this.com.CommandText = sql;
             this.cn.Open();
             int af = this.com.ExecuteNonQuery();
+            this.cn.Close();
+            this.com.Parameters.Clear();
+        }
+
+        public void ModificarProcedure(int idcomic, string nombre, string imagen, string descripcion)
+        {
+            OracleParameter pamId = new OracleParameter(":IDCOMIC", idcomic);
+            this.com.Parameters.Add(pamId);
+            OracleParameter pamNombre = new OracleParameter(":NOMBRE", nombre);
+            this.com.Parameters.Add(pamNombre);
+            OracleParameter pamImagen = new OracleParameter(":IMAGEN", imagen);
+            this.com.Parameters.Add(pamImagen);
+            OracleParameter pamDesc = new OracleParameter(":DESCRIPCION", descripcion);
+            this.com.Parameters.Add(pamDesc);
+            
+            this.com.CommandType = CommandType.StoredProcedure;
+            this.com.CommandText = "SP_MODIFICAR_COMIC";
+            this.cn.Open();
+            int mod = this.com.ExecuteNonQuery();
             this.cn.Close();
             this.com.Parameters.Clear();
         }

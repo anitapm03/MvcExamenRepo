@@ -55,5 +55,49 @@ namespace MvcExamenComics.Controllers
             this.repo.EliminarComic(idcomic);
             return RedirectToAction("Index");
         }
+
+        public IActionResult ModificarProcedure(int idcomic)
+        {
+            Comic comic = this.repo.FindComic(idcomic);
+            return View(comic);
+        }
+
+        [HttpPost]
+        public IActionResult ModificarProcedure(Comic comic)
+        {
+            this.repo.ModificarProcedure(comic.IdComic, comic.Nombre, comic.Imagen, comic.Descripcion);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Buscador()
+        {
+            ViewData["COMICS"] = this.repo.GetNombres();
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Buscador(string nombre)
+        {
+            ViewData["COMICS"] = this.repo.GetNombres();
+            Comic comic = this.repo.FindByName(nombre);
+            return View(comic);
+        }
+
+        public IActionResult Borrar(int idcomic)
+        {
+            Comic comic = this.repo.FindComic(idcomic);
+            return View(comic);
+        }
+
+        [HttpPost]
+        public IActionResult Borrar(int? idcomic)
+        {
+            if (idcomic != -1)
+            {
+                this.repo.EliminarComic(idcomic.Value);
+            }
+            
+            return RedirectToAction("Index");   
+        }
     }
 }

@@ -1,0 +1,25 @@
+﻿@model Comic
+
+<h1>Editar comic con procedure</h1>
+
+<p>
+    <a asp-controller="Comics" asp-action="Index">
+        Volver
+    </a>
+</p>
+
+<form method="post">
+
+    <input type="hidden" name="idcomic" value="@Model.IdComic" class="form-control" />
+    <br />
+    <label>Nombre</label>
+    <input type="text" name="nombre" value="@Model.Nombre" class="form-control" />
+    <br />
+    <label>Imagen</label>
+    <input type="text" name="imagen" value="@Model.Imagen" class="form-control" />
+    <br />
+    <label>Descripcion</label>
+    <input type="text" name="descripcion" value="@Model.Descripcion" class="form-control" />
+    <br />
+    <button class="btn btn-danger">Guardar cambios</button>
+</form>

@@ -9,7 +9,14 @@
         void ModificarComic
             (int idcomic, string nombre, string imagen, string descripcion);
 
+        void ModificarProcedure
+            (int idcomic, string nombre, string imagen, string descripcion);
+
         void Insertar
             (int idcomic, string nombre, string imagen, string descripcion);
+
+        Comic FindByName(string nombre);
+
+        List<string> GetNombres();
     }
 }

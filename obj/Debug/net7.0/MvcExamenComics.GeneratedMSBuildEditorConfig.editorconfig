@@ -18,6 +18,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\apere\source\repos\MvcExamenComics\MvcExamenComics
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Comics/Borrar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taWNzXEJvcnJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Comics/Buscador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taWNzXEJ1c2NhZG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Comics/Crear.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taWNzXENyZWFyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Comics/Modificar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taWNzXE1vZGlmaWNhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Comics/ModificarProcedure.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29taWNzXE1vZGlmaWNhclByb2NlZHVyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/apere/source/repos/MvcExamenComics/MvcExamenComics/Views/Home/Index.cshtml]

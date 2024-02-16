@@ -16,7 +16,8 @@
             <th>Nombre</th>
             <th>Foto</th>
             <th>Descripción</th>
-            <th></th>
+            <th>Metodos clasicos</th>
+            <th>Metodos especiales</th>
         </thead>
         <tbody>
             @foreach (Comic c in Model)
@@ -48,6 +49,20 @@
                            asp-route-idcomic="@c.IdComic"
                            class="btn btn-danger">
                             Eliminar
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-asp-controller="Comics"
+                           asp-action="ModificarProcedure"
+                           asp-route-idcomic="@c.IdComic"
+                           class="btn btn-info">
+                            Modificar con procedure
+                        </a>
+                        <a asp-asp-controller="Comics"
+                           asp-action="Borrar"
+                           asp-route-idcomic="@c.IdComic"
+                           class="btn btn-danger">
+                            Eliminar con view
                         </a>
                     </td>
                 </tr>
